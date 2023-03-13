@@ -10,9 +10,9 @@ import (
 func main() {
 
 	models.Livros = []models.Livro{
-		{Nome: "Nome 1", Descricao: "Descricao 1"},
-		{Nome: "Nome 2", Descricao: "Descricao 2"},
+		{Id: 1, Nome: "Nome 1", Descricao: "Descricao 1"},
+		{Id: 2, Nome: "Nome 2", Descricao: "Descricao 2"},
 	}
-	fmt.Println("Iniciando o Servidor Rest com go")
+	fmt.Println("Iniciando API Rest")
 	routes.HandleRequest()
 }
