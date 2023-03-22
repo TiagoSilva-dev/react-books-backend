@@ -15,5 +15,7 @@ func HandleRequest() {
 	r.HandleFunc("/api/livros", controllers.TodosLivros).Methods("Get")
 	r.HandleFunc("/api/livros/{id}", controllers.RetornaUmLivro).Methods("Get")
 
-	log.Fatal(http.ListenAndServe(":4000", r))
+	r.Use(mux.CORSMethodMiddleware(r))
+
+	log.Fatal(http.ListenAndServe(":4010", r))
 }

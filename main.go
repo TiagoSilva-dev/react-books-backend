@@ -1,18 +1,16 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
-	"github.com/tiagosilva-dev/react-books-backend/models"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/tiagosilva-dev/react-books-backend/routes"
 )
 
 func main() {
 
-	models.Livros = []models.Livro{
-		{Id: 1, Nome: "Nome 1", Descricao: "Descricao 1"},
-		{Id: 2, Nome: "Nome 2", Descricao: "Descricao 2"},
-	}
-	fmt.Println("Iniciando API Rest")
+	log.Printf("Connect to http://localhost:4010/api/livros")
+	log.Printf("[!] To exit press CTRL+C \n")
+
 	routes.HandleRequest()
 }
