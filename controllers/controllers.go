@@ -14,7 +14,7 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Home Page")
+	fmt.Fprintf(w, "https://github.com/TiagoSilva-dev/react-books-backend")
 }
 
 func TodosLivros(w http.ResponseWriter, r *http.Request) {
@@ -22,16 +22,22 @@ func TodosLivros(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 
-	dbcon, err := sql.Open("mysql", "root:supplylabs@tcp(localhost:3306)/dbname")
+	dbcon, err := sql.Open("mysql", "admin:adminroot@tcp(database-2.cjcxmcxnspbr.us-west-2.rds.amazonaws.com:3306)/dbname")
+
 	if err != nil {
 		panic(err.Error())
+
 	}
 
 	defer dbcon.Close()
 
 	dt := db.New(dbcon)
 
-	livros, _ := dt.GetLivros(ctx)
+	livros, err := dt.GetLivros(ctx)
+
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
 
 	json.NewEncoder(w).Encode(livros)
 }
