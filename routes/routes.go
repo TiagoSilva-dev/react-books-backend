@@ -12,8 +12,8 @@ func HandleRequest() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", controllers.Home)
-	r.HandleFunc("/api/livros", controllers.TodosLivros).Methods("Get")
-	r.HandleFunc("/api/livros/{id}", controllers.RetornaUmLivro).Methods("Get")
+	r.HandleFunc("/livros", controllers.TodosLivros).Methods("Get")
+	r.HandleFunc("/livros/{id}", controllers.RetornaUmLivro).Methods("Get")
 
 	r.Use(mux.CORSMethodMiddleware(r))
 

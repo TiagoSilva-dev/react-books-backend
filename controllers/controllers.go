@@ -22,7 +22,7 @@ func TodosLivros(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 
-	dbcon, err := sql.Open("mysql", "admin:adminroot@tcp(database-2.cjcxmcxnspbr.us-west-2.rds.amazonaws.com:3306)/dbname")
+	dbcon, err := sql.Open("mysql", "root:adminroot@tcp(database-1.ch8yjsil1ked.us-west-2.rds.amazonaws.com:3306)/projeto")
 
 	if err != nil {
 		panic(err.Error())
