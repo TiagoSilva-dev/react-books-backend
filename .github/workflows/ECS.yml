@@ -28,7 +28,7 @@ jobs:
       - name: configurando credenciais da AWS
         uses: aws-actions/configure-aws-credentials@v1
         with:
-         role-to-assume: arn:aws:iam::554559581131:role/producao_cargo
+         role-to-assume: arn:aws:iam::554559581131:instance-profile/producao_perfil
          aws-region: us-west-2
       
       - name: Login to Amazon ECR
