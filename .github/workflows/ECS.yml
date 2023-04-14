@@ -3,6 +3,11 @@ name: Deploy to Amazon ECS
 
 on:
     workflow_call:
+     secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+         required: true
     
     push:
      branches:
@@ -26,7 +31,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+        
       - name: configurando credenciais da AWS
         uses: aws-actions/configure-aws-credentials@v1
         with:
