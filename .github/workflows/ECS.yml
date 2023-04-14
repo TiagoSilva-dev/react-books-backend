@@ -40,9 +40,6 @@ jobs:
          aws-access-key-id: AKIAYCHSTVPF3MX4TY73
          aws-secret-access-key: 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
          aws-region: us-east-2
-    
-      - name: Obtendo arquivo da tarefa
-        run: aws ecs describe-task-definition --task-definition projeto-back --query taskDefinition > task-definition.json
       
       - name: Login to Amazon ECR
         id: login-ecr
