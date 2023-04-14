@@ -35,9 +35,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Configure AWS credentials
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1.4.10
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-           task-definition: ${{ env.ECS_TASK_DEFINITION }}
+           task-definition: task-definition.json
 
       - name: Login to Amazon ECR
         id: login-ecr
