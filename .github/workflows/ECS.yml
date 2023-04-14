@@ -34,11 +34,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Configure AWS credentials
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      - name: configurando credenciais da AWS
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-           task-definition: task-definition.json
-
+         aws-access-key-id: AKIAYCHSTVPF3MX4TY73
+         aws-secret-access-key: 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
+         aws-region: us-east-2
+    
+      - name: Obtendo arquivo da tarefa
+        run: aws ecs describe-task-definition --task-definition projeto-back --query taskDefinition > task-definition.json
+      
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@aaf69d68aa3fb14c1d5a6be9ac61fe15b48453a2
@@ -60,7 +65,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@97587c9d45a4930bf0e3da8dd2feb2a463cf4a3a
         with:
-          task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          task-definition: task-definition.json
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
